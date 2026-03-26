@@ -25,7 +25,8 @@ python media_downloader.py
 Then select your RTF file and target folder via dialogs.
 
 ### RTF Format:
-Simple list of URLs (one column):
+An RTF file containing **hyperlinks** (RTF `HYPERLINK` fields). The downloader extracts
+URLs from any cell that contains a real RTF hyperlink.
 ```
 https://youtube.com/watch?v=abc123
 https://youtube.com/watch?v=def456  
@@ -68,7 +69,7 @@ python clip_extractor.py "your_file.rtf" "./output"
 ```
 
 ### RTF Format:
-Multi-column table with URL, Timeframe, and Dialogue:
+Multi-column table with URL, **Timeframe**, and **Dialogue**:
 
 | Link | Timeframe | Dialogue |
 |------|-----------|----------|
@@ -93,15 +94,22 @@ Output/
 
 ## Installation
 
-Both tools use the same dependencies:
+Both tools need `ffmpeg` and `yt-dlp`/`requests`.
+
+Buffer mode (downloader + buffer extraction) quick install:
 
 ```bash
-# Install Python packages
 pip install yt-dlp requests
 
-# Install ffmpeg (required for clip extractor, helpful for downloader)
+# Install ffmpeg (required for clip extraction; downloader also benefits)
 brew install ffmpeg  # macOS
 sudo apt install ffmpeg  # Ubuntu/Linux
+```
+
+Smart mode (Whisper AI word matching) additionally needs:
+
+```bash
+pip install -r requirements.txt
 ```
 
 ---
