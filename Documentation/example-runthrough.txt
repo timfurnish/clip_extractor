@@ -1,0 +1,225 @@
+(.venv) timfurnish@Eldritch VideoGrabber portable % ./run_clip_extractor.sh
+
+============================================================
+Clip Extractor - Video Download & Processing Tool
+============================================================
+This tool can download videos and extract clips based on RTF timeframes,
+or download and convert individual videos from URLs.
+
+
+
+============================================================
+🍪 YOUTUBE COOKIE PROFILES SETUP
+============================================================
+To bypass YouTube's quality restrictions, you can create multiple
+cookie profiles. The script will try each one until it finds one
+that allows 720p+ downloads.
+
+📁 Cookie Files to Create:
+   • youtube_cookies.txt           (Primary profile)
+   • youtube_cookies_profile2.txt   (Secondary profile)
+   • youtube_cookies_profile3.txt   (Tertiary profile)
+   • youtube_cookies_private.txt    (Private browser profile)
+
+🔧 How to Create Cookie Files:
+1. Install a browser extension like 'Get cookies.txt' or 'cookies.txt'
+2. Go to YouTube.com and log in with different accounts
+3. Use the extension to export cookies
+4. Save as the appropriate filename in the script directory
+
+🌐 Alternative: Use Private Browser Session
+1. Open YouTube in private/incognito mode
+2. Export cookies from private session
+3. Save as 'youtube_cookies_private.txt'
+
+💡 Pro Tips:
+   • Different accounts may have different quality access
+   • Premium accounts often get better quality
+   • Private sessions sometimes bypass restrictions
+   • The script will try all available profiles automatically
+============================================================
+
+
+============================================================
+📋 DOWNLOAD MODE SELECTION
+============================================================
+Choose your download mode:
+A) Download from RTF file - Extract clips based on timeframes
+B) Download single video - Download and convert one video
+C) Download all full videos - Download all videos without clip extraction
+D) Extract clips from LOCAL videos folder (RTF timeframes; no downloading)
+E) Diagnostics - Analyze a single YouTube URL (formats, cookies, restrictions)
+
+💡 Tip: Type 'go back' to return to start, 'restart' to restart the application
+Enter choice (A/B/C/D/E): D
+Opening file dialog to select source RTF file...
+
+Select the folder that contains your already-downloaded videos (1080p, etc.).
+
+Source file: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/sample.rtf
+Suggested default (same folder as RTF): /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable
+
+Where should downloads and clips be saved?
+1. Choose folder… (opens a folder picker — recommended)
+2. Same folder as the RTF file
+3. Create a new subfolder next to the RTF file
+Enter choice (1-3) [default: 1]: 1
+Opening folder picker…
+✓ Destination: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/clips/
+
+============================================================
+TIME BUFFER SETTINGS
+============================================================
+Adding a buffer helps avoid cutting off the beginning or end of clips.
+Example: A 2-second buffer adds 2s before and 2s after each clip.
+
+Seconds to add before AND after each clip [default: 2]: 2
+
+✓ Using buffer: 2s before and after each clip
+
+
+Final settings:
+Source file: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/sample.rtf
+Target directory: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/clips/
+Extraction mode: LOCAL
+
+Proceed with clip extraction? (y/N): y
+
+============================================================
+📁 LOCAL FOLDER CLIP EXTRACTION
+============================================================
+RTF: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/sample.rtf
+Source videos folder: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/AI Beyond LLMs-On the Road to AGI/
+Output folder: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/clips/
+
+2026-03-26 00:14:03,164 - INFO - Using BUFFER mode - 2s before, 2s after each clip
+2026-03-26 00:14:03,164 - INFO - Parsing RTF file: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/sample.rtf
+2026-03-26 00:14:03,166 - INFO - Extracted row: Primary URL=https://www.youtube.com/watch?v=ckn04X_2vlQ..., Folder='Rockefeller's Ruchir Sharma: AI spending...', Timeframe=None, Extra URLs=0
+2026-03-26 00:14:03,166 - INFO - Extracted row: Primary URL=https://www.facebook.com/fareedzakaria/videos/will..., Folder='Will AI Save the Economy...', Timeframe=None, Extra URLs=0
+2026-03-26 00:14:03,166 - INFO - Extracted row: Primary URL=https://www.youtube.com/watch?v=AGZn1HKjkdM..., Folder='Is a bubble forming as AI investments dr...', Timeframe=1:49:58 & 2:09:16, Extra URLs=0
+2026-03-26 00:14:03,167 - INFO - Extracted row: Primary URL=https://www.youtube.com/watch?v=ckn04X_2vlQ..., Folder='Rockefeller's Ruchir Sharma: AI spending...', Timeframe=4:43- 4:52, Extra URLs=0
+2026-03-26 00:14:03,167 - INFO - Extracted row: Primary URL=https://www.youtube.com/watch?v=9r3YdMFjNZY..., Folder='The AI Frontier-More than LLMs...', Timeframe=None, Extra URLs=0
+2026-03-26 00:14:03,167 - INFO - Extracted row: Primary URL=https://www.youtube.com/watch?v=osKyvYJ3PRM..., Folder='LLMs...', Timeframe=None, Extra URLs=0
+2026-03-26 00:14:03,168 - INFO - Skipping unsupported URL: https://www.ft.com/content/045dac3f-eb78-469d-a3ef-3495aefa6e8f
+2026-03-26 00:14:03,168 - INFO - Skipping unsupported URL: https://www.nytimes.com/2025/09/25/technology/grok-xai-government-elon-musk.html?searchResultPosition=31
+2026-03-26 00:14:03,168 - INFO - Skipping unsupported URL: https://www.washingtonpost.com/technology/2024/02/20/pentagon-ai-llm-conference/
+2026-03-26 00:14:03,168 - INFO - Skipping unsupported URL: https://www.wsj.com/podcasts/tech-news-briefing/chatbot-confidential-using-ai-for-tax-preparation/3111a230-8513-4c02-8afb-c2b5591be57d?mod=Searchresults&pos=6&page=3
+2026-03-26 00:14:03,168 - INFO - Skipping unsupported URL: https://www.ft.com/artificial-intelligence
+2026-03-26 00:14:03,168 - INFO - Extracted row: Primary URL=https://www.youtube.com/watch?v=dctcfxw13AQ..., Folder='Chatbots...', Timeframe=None, Extra URLs=0
+2026-03-26 00:14:03,169 - INFO - Extracted row: Primary URL=https://www.youtube.com/watch?v=pE9VlF8paGY..., Folder='Nividia's AI Revolution...', Timeframe=None, Extra URLs=0
+2026-03-26 00:14:03,169 - INFO - Extracted row: Primary URL=https://www.youtube.com/watch?v=p1QXZHV4jkM..., Folder='Meta's AI boss says he's done with LLMs...', Timeframe=None, Extra URLs=0
+2026-03-26 00:14:03,169 - INFO - Extracted row: Primary URL=https://www.youtube.com/watch?v=eBEIKSwMlck..., Folder='The Next Big Leap in AI...', Timeframe=4:13 - 4:23, Extra URLs=0
+2026-03-26 00:14:03,169 - INFO - Extracted row: Primary URL=https://www.youtube.com/watch?v=ATz-qVlmaj8&t=417s..., Folder='Josh Wolfe of Lux Capital on Turning Sci...', Timeframe=7:01:05 & 7:08:13, Extra URLs=0
+2026-03-26 00:14:03,169 - INFO - Extracted row: Primary URL=https://www.youtube.com/watch?v=9r3YdMFjNZY..., Folder='The AI Frontier-More than LLMs...', Timeframe=1:18 - 1:33, Extra URLs=0
+2026-03-26 00:14:03,170 - INFO - Extracted row: Primary URL=http://youtube.com/watch?v=3WZNxNr7kS8..., Folder='AI is About to get Physical...', Timeframe=None, Extra URLs=0
+2026-03-26 00:14:03,170 - INFO - Extracted row: Primary URL=https://www.youtube.com/watch?v=EEXI6r08908&t=1s..., Folder='Introducing: Bolt & Bolt-M...', Timeframe=None, Extra URLs=0
+2026-03-26 00:14:03,170 - INFO - Extracted row: Primary URL=https://www.youtube.com/watch?v=AoyAuPvIago..., Folder='Jonathan Frankle Data+AI Summit...', Timeframe=None, Extra URLs=0
+2026-03-26 00:14:03,170 - INFO - Extracted row: Primary URL=https://www.youtube.com/watch?v=AMRxbIO04kQ..., Folder='Gemini Robotics 1.5: Using agentic capab...', Timeframe=None, Extra URLs=0
+2026-03-26 00:14:03,170 - INFO - Extracted row: Primary URL=https://www.youtube.com/watch?v=AoyAuPvIago..., Folder='Jonathan Frankle Data+AI Summit...', Timeframe=None, Extra URLs=0
+2026-03-26 00:14:03,171 - INFO - Extracted 17 clip entries from RTF
+2026-03-26 00:14:03,175 - INFO - Indexed 32 local video files under: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/AI Beyond LLMs-On the Road to AGI/
+2026-03-26 00:14:03,175 - INFO - ============================================================
+2026-03-26 00:14:03,175 - INFO - Local folder 1/14: Rockefeller's Ruchir Sharma: AI spending is driving U.S. markets and economy
+2026-03-26 00:14:03,175 - INFO - ============================================================
+2026-03-26 00:14:03,177 - INFO - Using local video: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/AI Beyond LLMs-On the Road to AGI/Rockefeller's Ruchir Sharma- AI spending is driving U.S. markets and economy/Rockefeller's Ruchir Sharma- AI spending is driving U.S. markets and economy.mp4
+2026-03-26 00:14:03,177 - WARNING - No timeframe specified - skipping clip extraction for this row
+2026-03-26 00:14:03,177 - INFO - Extracting clip: 4:39 to 4:56
+2026-03-26 00:14:03,177 - INFO -   (Normalized end time: 4:56.999 to include all frames)
+2026-03-26 00:14:03,178 - INFO -   Trying stream copy (-c copy) for speed; will re-encode if needed
+2026-03-26 00:14:03,345 - INFO - ✓ Clip extracted: The US...1%__4-41_4-54.mp4
+2026-03-26 00:14:03,346 - INFO - ============================================================
+2026-03-26 00:14:03,346 - INFO - Local folder 2/14: Will AI Save the Economy
+2026-03-26 00:14:03,346 - INFO - ============================================================
+2026-03-26 00:14:03,346 - INFO - Using local video: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/AI Beyond LLMs-On the Road to AGI/Will AI Save the Economy/Will AI save the economy Or is it a bubble waiting to pop?_H264.mp4
+2026-03-26 00:14:03,347 - WARNING - No timeframe specified - skipping clip extraction for this row
+2026-03-26 00:14:03,347 - INFO - ============================================================
+2026-03-26 00:14:03,347 - INFO - Local folder 3/14: Is a bubble forming as AI investments drive economic growth?
+2026-03-26 00:14:03,347 - INFO - ============================================================
+2026-03-26 00:14:03,348 - INFO - Using local video: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/AI Beyond LLMs-On the Road to AGI/Is a bubble forming as AI investments drive economic growth/Is a bubble forming as AI investments drive economic growth.mp4
+2026-03-26 00:14:03,348 - INFO - Extracting clip: 1:49:54 to 2:09:20
+2026-03-26 00:14:03,348 - INFO -   (Normalized end time: 2:09:20.999 to include all frames)
+2026-03-26 00:14:03,348 - INFO -   Trying stream copy (-c copy) for speed; will re-encode if needed
+2026-03-26 00:14:03,531 - INFO - ✓ Clip extracted: since...exploded & why...services__1-49-56_2-09-18.mp4
+2026-03-26 00:14:03,531 - INFO - ============================================================
+2026-03-26 00:14:03,531 - INFO - Local folder 4/14: The AI Frontier-More than LLMs
+2026-03-26 00:14:03,531 - INFO - ============================================================
+2026-03-26 00:14:03,532 - INFO - Using local video: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/AI Beyond LLMs-On the Road to AGI/The AI Frontier-More than LLMs/The AI Frontier–More Than LLMs_H264.mp4
+2026-03-26 00:14:03,532 - WARNING - No timeframe specified - skipping clip extraction for this row
+2026-03-26 00:14:03,532 - INFO - Extracting clip: 1:14 to 1:37
+2026-03-26 00:14:03,532 - INFO -   (Normalized end time: 1:37.999 to include all frames)
+2026-03-26 00:14:03,532 - INFO -   Trying stream copy (-c copy) for speed; will re-encode if needed
+2026-03-26 00:14:03,644 - INFO - ✓ Clip extracted: In medicine...outcomes__1-16_1-35.mp4
+2026-03-26 00:14:03,644 - INFO - ============================================================
+2026-03-26 00:14:03,644 - INFO - Local folder 5/14: LLMs
+2026-03-26 00:14:03,644 - INFO - ============================================================
+2026-03-26 00:14:03,645 - INFO - Using local video: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/AI Beyond LLMs-On the Road to AGI/LLMs/Large Language Models (LLMs) - Everything You NEED To Know.mp4
+2026-03-26 00:14:03,645 - WARNING - No timeframe specified - skipping clip extraction for this row
+2026-03-26 00:14:03,645 - INFO - ============================================================
+2026-03-26 00:14:03,645 - INFO - Local folder 6/14: Chatbots
+2026-03-26 00:14:03,645 - INFO - ============================================================
+2026-03-26 00:14:03,645 - INFO - Using local video: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/AI Beyond LLMs-On the Road to AGI/Chatbots/This has caused more.mp4
+2026-03-26 00:14:03,645 - WARNING - No timeframe specified - skipping clip extraction for this row
+2026-03-26 00:14:03,645 - INFO - ============================================================
+2026-03-26 00:14:03,645 - INFO - Local folder 7/14: Nividia's AI Revolution
+2026-03-26 00:14:03,645 - INFO - ============================================================
+2026-03-26 00:14:03,646 - INFO - Using local video: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/AI Beyond LLMs-On the Road to AGI/Nividia's AI Revolution/Nvidia's AI Revolution- What's Next for Tech Jack Hidary, Squawk on the Street.mp4
+2026-03-26 00:14:03,646 - WARNING - No timeframe specified - skipping clip extraction for this row
+2026-03-26 00:14:03,646 - INFO - ============================================================
+2026-03-26 00:14:03,646 - INFO - Local folder 8/14: Meta's AI boss says he's done with LLMs
+2026-03-26 00:14:03,646 - INFO - ============================================================
+2026-03-26 00:14:03,647 - INFO - Using local video: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/AI Beyond LLMs-On the Road to AGI/Meta's AI boss says he's done with LLMs/Metas AI Boss Says He DONE With LLMS.mp4
+2026-03-26 00:14:03,647 - WARNING - No timeframe specified - skipping clip extraction for this row
+2026-03-26 00:14:03,647 - INFO - ============================================================
+2026-03-26 00:14:03,647 - INFO - Local folder 9/14: The Next Big Leap in AI
+2026-03-26 00:14:03,647 - INFO - ============================================================
+2026-03-26 00:14:03,648 - INFO - Using local video: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/AI Beyond LLMs-On the Road to AGI/The Next Big Leap in AI/Will AI save the economy Or is it a bubble waiting to pop.mov
+2026-03-26 00:14:03,648 - INFO - Extracting clip: 4:09 to 4:27
+2026-03-26 00:14:03,648 - INFO -   (Normalized end time: 4:27.999 to include all frames)
+2026-03-26 00:14:03,648 - INFO -   Trying stream copy (-c copy) for speed; will re-encode if needed
+2026-03-26 00:14:03,761 - WARNING - Stream copy failed (codec/container mismatch). Re-encoding clip to H.264/AAC…
+2026-03-26 00:14:28,532 - INFO - ✓ Clip extracted: the next...numerical side__4-11_4-25.mp4
+2026-03-26 00:14:28,533 - INFO - ============================================================
+2026-03-26 00:14:28,533 - INFO - Local folder 10/14: Josh Wolfe of Lux Capital on Turning Sci-Fi into Sci-Fact
+2026-03-26 00:14:28,533 - INFO - ============================================================
+2026-03-26 00:14:28,534 - INFO - Using local video: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/AI Beyond LLMs-On the Road to AGI/Josh Wolfe 2025 Upfront Summit/Josh Wolfe of Lux Capital on Turning Sci-Fi into Sci-Fact 2025 Upfront Summit.mp4
+2026-03-26 00:14:28,534 - INFO - Extracting clip: 7:01:01 to 7:08:17
+2026-03-26 00:14:28,534 - INFO -   (Normalized end time: 7:08:17.999 to include all frames)
+2026-03-26 00:14:28,535 - INFO -   Trying stream copy (-c copy) for speed; will re-encode if needed
+2026-03-26 00:14:29,043 - INFO - ✓ Clip extracted: I think...years & is in...robotics__7-01-03_7-08-15.mp4
+2026-03-26 00:14:29,043 - INFO - ============================================================
+2026-03-26 00:14:29,043 - INFO - Local folder 11/14: AI is About to get Physical
+2026-03-26 00:14:29,043 - INFO - ============================================================
+2026-03-26 00:14:29,044 - INFO - Using local video: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/AI Beyond LLMs-On the Road to AGI/AI is About to get Physical/AI Is About to Get Physical.mp4
+2026-03-26 00:14:29,044 - WARNING - No timeframe specified - skipping clip extraction for this row
+2026-03-26 00:14:29,044 - INFO - ============================================================
+2026-03-26 00:14:29,044 - INFO - Local folder 12/14: Introducing: Bolt & Bolt-M
+2026-03-26 00:14:29,044 - INFO - ============================================================
+2026-03-26 00:14:29,045 - INFO - Using local video: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/AI Beyond LLMs-On the Road to AGI/Introducing- Bolt & Bolt-M/Introducing- Bolt & Bolt-M_H264.mp4
+2026-03-26 00:14:29,045 - WARNING - No timeframe specified - skipping clip extraction for this row
+2026-03-26 00:14:29,045 - INFO - ============================================================
+2026-03-26 00:14:29,045 - INFO - Local folder 13/14: Jonathan Frankle Data+AI Summit
+2026-03-26 00:14:29,045 - INFO - ============================================================
+2026-03-26 00:14:29,046 - INFO - Using local video: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/AI Beyond LLMs-On the Road to AGI/Jonathan Frankle Data+AI Summit/Jonathan Frankle, Databricks Databricks Data+AI Summit 2025.mp4
+2026-03-26 00:14:29,047 - WARNING - No timeframe specified - skipping clip extraction for this row
+2026-03-26 00:14:29,047 - WARNING - No timeframe specified - skipping clip extraction for this row
+2026-03-26 00:14:29,047 - INFO - ============================================================
+2026-03-26 00:14:29,047 - INFO - Local folder 14/14: Gemini Robotics 1.5: Using agentic capabilities
+2026-03-26 00:14:29,047 - INFO - ============================================================
+2026-03-26 00:14:29,048 - INFO - Using local video: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/AI Beyond LLMs-On the Road to AGI/Gemini Robotics 1.5 Using agentic capabilities/Gemini Robotics 1.5 Using agentic capabilities.mp4
+2026-03-26 00:14:29,048 - WARNING - No timeframe specified - skipping clip extraction for this row
+
+==================================================
+MEDIA EXTRACTION SUMMARY
+==================================================
+Processing mode: LOCAL
+Total entries processed: 17
+Total clips to extract: 5
+Videos downloaded: 0
+Videos converted (AV1→H.264): 0
+Clips extracted: 5
+Errors: 0
+Output directory: /Users/timfurnish/Documents/TIMS_PROGRAMMING_PROJECTS/Utilities/VideoGrabber portable/clips/
+
+Media files are organized in folders by video title
+==================================================
+(.venv) timfurnish@Eldritch VideoGrabber portable % 
