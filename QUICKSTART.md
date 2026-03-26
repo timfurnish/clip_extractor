@@ -61,11 +61,16 @@ Then follow prompts to:
 - Select RTF file
 - Choose target directory
 - Set time buffers (default: 2s before/after)
+- **Clip export:** *Stream copy* (default, fast) or *Re-encode* (accurate picture start; see on-screen pros/cons)
 - Confirm and extract!
+
+**Stream copy vs re-encode:** Default is stream copy — fast and lossless with respect to the source file, but ffmpeg may only start the **video** on a keyframe, so you can see **frozen or black** frames for a moment while **audio** is already correct. Choose **re-encode** when you need picture and sound to line up from the first frame (slower).
 
 ### Command Line Run:
 ```bash
 python clip_extractor.py "your_file.rtf" "./output"
+# Optional: re-encode clips (H.264/AAC) instead of stream copy
+python clip_extractor.py "your_file.rtf" "./output" --reencode
 ```
 
 ### RTF Format:
@@ -75,6 +80,8 @@ Multi-column table with URL, **Timeframe**, and **Dialogue**:
 |------|-----------|----------|
 | https://youtube.com/... | 0:09-0:18 | "Opening quote" |
 | https://youtube.com/... | 4:14-4:17 & 4:29-4:31 | "Two key moments" |
+
+**Templates:** see the **[Reference Files](Reference%20Files/)** folder for an example `.xlsx` and screenshot. The tool reads **RTF only** (not Excel directly). A practical macOS path: copy the table from Excel/Sheets → paste into **Apple Notes** → copy from Notes → paste into **TextEdit** → **Save as RTF**. Direct **Excel upload** or **Google Sheet links** are not supported yet (planned).
 
 ### Output:
 ```
