@@ -1017,6 +1017,10 @@ class ClipExtractor:
                 'proxy': '',
             }
 
+            # For YouTube, 720p+ visibility can depend on which cookie profile/account
+            # is used. Probe all cookie profiles we have, and only report "no 720p+"
+            # if none of them show >=720 formats.
+            cookie_candidates = [None]
             if 'youtube.com' in url.lower() or 'youtu.be' in url.lower():
                 cookies_files = [
                     Path(__file__).parent / 'youtube_cookies.txt',
@@ -1024,27 +1028,34 @@ class ClipExtractor:
                     Path(__file__).parent / 'youtube_cookies_profile3.txt',
                     Path(__file__).parent / 'youtube_cookies_private.txt',
                 ]
-                for cookie_file in cookies_files:
-                    if cookie_file.exists():
-                        check_opts['cookiefile'] = str(cookie_file)
-                        break
-            
-            with yt_dlp.YoutubeDL(check_opts) as ydl:
-                info = ydl.extract_info(url, download=False)
-                
+                cookie_candidates = [cf for cf in cookies_files if cf.exists()] or [None]
+
+            for cookie_file in cookie_candidates:
+                probe_opts = dict(check_opts)
+                if cookie_file is not None:
+                    probe_opts['cookiefile'] = str(cookie_file)
+                try:
+                    with yt_dlp.YoutubeDL(probe_opts) as ydl:
+                        info = ydl.extract_info(url, download=False)
+                except Exception:
+                    continue
+
                 if not info or 'formats' not in info:
+                    # If we can't read formats, don't hard-fail quality enforcement.
                     return True, "Could not extract format info"
-                
+
                 # Check for formats with height >= 720
                 high_quality_formats = []
                 for fmt in info.get('formats', []):
                     height = fmt.get('height', 0)
                     if height >= 720:
                         high_quality_formats.append(f"{height}p")
-                
+
                 if high_quality_formats:
-                    return True, f"720p+ formats available: {', '.join(set(high_quality_formats))}"
-                return False, "No 720p+ formats available (given current access)"
+                    cookie_note = f" using cookies: {getattr(cookie_file, 'name', '')}" if cookie_file else ""
+                    return True, f"720p+ formats available{cookie_note}: {', '.join(set(high_quality_formats))}"
+
+            return False, "No 720p+ formats available (given current access/cookies)"
                     
         except Exception as e:
             return True, f"Format check failed: {e}"
@@ -1589,9 +1600,28 @@ class ClipExtractor:
                         self.logger.info("Removed low-quality video file")
                     except Exception as e:
                         self.logger.warning(f"Could not remove low-quality file: {e}")
-                    
-                    # This should trigger the retry logic with different methods
-                    return None
+
+                    # Quality validation failed even though we believed >=720p exists.
+                    # Try the same escalation path we use for exceptions: multiple cookie
+                    # profiles first, then stealth/alternative YouTube download methods.
+                    retry_path = None
+                    self.logger.info("Attempting re-download using multiple cookie profiles / stealth after quality failure...")
+                    cookie_result = self.try_multiple_cookie_profiles(url, output_template)
+                    if cookie_result:
+                        retry_path = str(cookie_result)
+                    else:
+                        stealth_result = self.try_stealth_youtube_download(url, output_template)
+                        if stealth_result:
+                            retry_path = str(stealth_result)
+                        else:
+                            alternative_result = self.try_alternative_youtube_download(url, output_template)
+                            if alternative_result:
+                                retry_path = str(alternative_result)
+
+                    if not retry_path:
+                        return None
+                    video_path = retry_path
+                    self.logger.info("✅ Quality recovered via fallback download; continuing post-processing...")
                 else:
                     self.logger.info(f"✅ Video quality validation passed: {quality_msg}")
             
@@ -2019,7 +2049,6 @@ class ClipExtractor:
                         'youtube': {
                             'player_client': ['android', 'ios', 'web'],
                             'player_skip': ['webpage', 'configs'],
-                            'skip': ['dash', 'hls'],
                             'lang': ['en', 'en-US'],
                             'geo_bypass': True,
                         }
